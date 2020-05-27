@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="baf21607-4ec1-465f-ae10-7856055ffd68" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api_calls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FaceCalibration.py" beforeDir="false" afterPath="$PROJECT_DIR$/FaceCalibration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FaceRecognition.py" beforeDir="false" afterPath="$PROJECT_DIR$/FaceRecognition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MonitoringThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/MonitoringThread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SubmitWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/SubmitWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestDetailsWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestDetailsWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applogic.py" beforeDir="false" afterPath="$PROJECT_DIR$/applogic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/continuous_monitoring_demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/continuous_monitoring_demo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eye_track_demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/eye_track_demo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/firstpage.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/firstpage.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/submitwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/submitwindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +39,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestWindow.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="540">
@@ -73,10 +64,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/continuous_monitoring_demo.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FaceCalibration.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
-              <caret line="71" column="56" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
+            <state relative-caret-position="113">
+              <caret line="87" column="40" lean-forward="true" selection-start-line="87" selection-start-column="40" selection-end-line="88" selection-end-column="38" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
                 <marker date="1590537554043" expanded="true" signature="6833:6857" ph="..." />
@@ -97,17 +100,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/eye_track_demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2640">
-              <caret line="176" column="101" lean-forward="true" selection-start-line="176" selection-start-column="101" selection-end-line="176" selection-end-column="101" />
+            <state relative-caret-position="618">
+              <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <marker date="1590525323268" expanded="true" signature="6845:6881" ph="..." />
+                <marker date="1590580353200" expanded="true" signature="6855:6891" ph="..." />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -115,27 +123,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
               <caret line="52" column="64" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api_calls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="55" column="20" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/PIL/Image.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="2895" selection-start-line="2895" selection-end-line="2895" />
             </state>
           </provider>
         </entry>
@@ -151,8 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>divisi</find>
-      <find>label</find>
       <find>pu</find>
       <find>dummy</find>
       <find>offscreen_time</find>
@@ -169,15 +154,20 @@
       <find>test_</find>
       <find>repo</find>
       <find>slot</find>
-      <find>landmarks_logreg</find>
       <find>recog</find>
       <find>student_img</find>
       <find>Moni</find>
       <find>verifiedFramesCount</find>
       <find>faceR</find>
-      <find>write</find>
       <find>dummy_questions_data</find>
       <find>app_sw</find>
+      <find>write</find>
+      <find>landmarks_logreg</find>
+      <find>landmarks_dataset</find>
+      <find>thresh</find>
+      <find>64</find>
+      <find>51</find>
+      <find>5</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -202,8 +192,6 @@
         <option value="$PROJECT_DIR$/face_cam.py" />
         <option value="$PROJECT_DIR$/FaceDetecterDnn.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/continuous_monitoring_demo.py" />
-        <option value="$PROJECT_DIR$/eye_track_demo.py" />
         <option value="$PROJECT_DIR$/api_calls.py" />
         <option value="$PROJECT_DIR$/FaceRecognition.py" />
         <option value="$PROJECT_DIR$/MonitoringThread.py" />
@@ -212,11 +200,13 @@
         <option value="$PROJECT_DIR$/FaceCalibration.py" />
         <option value="$PROJECT_DIR$/applogic.py" />
         <option value="$PROJECT_DIR$/TestWindow.py" />
+        <option value="$PROJECT_DIR$/continuous_monitoring_demo.py" />
+        <option value="$PROJECT_DIR$/eye_track_demo.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="27" />
+    <option name="y" value="28" />
     <option name="width" value="1440" />
     <option name="height" value="808" />
   </component>
@@ -267,7 +257,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.applogic">
+  <component name="RunManager" selected="Python.eye_track_demo">
     <configuration name="SubmitWindow" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Hexam" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -375,11 +365,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.eye_track_demo" />
+        <item itemvalue="Python.continuous_monitoring_demo" />
         <item itemvalue="Python.applogic" />
         <item itemvalue="Python.SubmitWindow" />
         <item itemvalue="Python.api_calls" />
-        <item itemvalue="Python.eye_track_demo" />
-        <item itemvalue="Python.continuous_monitoring_demo" />
       </list>
     </recent_temporary>
   </component>
@@ -397,11 +387,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1440" height="808" extended-state="0" />
+    <frame x="0" y="28" width="1440" height="808" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.21212122" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.21212122" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32960895" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
@@ -409,7 +399,7 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32960895" />
       <window_info anchor="bottom" id="Version Control" order="5" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.32960895" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -552,31 +542,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/continuous_monitoring_demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="53" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/lib/python3.7/site-packages/PIL/Image.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
           <caret line="2895" selection-start-line="2895" selection-end-line="2895" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eye_track_demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2640">
-          <caret line="176" column="101" lean-forward="true" selection-start-line="176" selection-start-column="101" selection-end-line="176" selection-end-column="101" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <marker date="1590525323268" expanded="true" signature="6845:6881" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -627,17 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FaceCalibration.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="71" column="56" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <marker date="1590537554043" expanded="true" signature="6833:6857" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/applogic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -654,6 +612,41 @@
           <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FaceCalibration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="87" column="40" lean-forward="true" selection-start-line="87" selection-start-column="40" selection-end-line="88" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1590537554043" expanded="true" signature="6833:6857" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/continuous_monitoring_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eye_track_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1590580353200" expanded="true" signature="6855:6891" ph="..." />
           </folding>
         </state>
       </provider>

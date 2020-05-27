@@ -18,6 +18,8 @@ frame_text=""
 not_checked_count=0
 while(True):
     ret,frame=cap.read()
+    img = cv2.flip(img, 1)
+
     frame_dnn, dnn_bboxes=dnnDetector.detectFaceOpenCVDnn(frame)
 
     if(len(dnn_bboxes))!=1:

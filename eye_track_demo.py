@@ -110,8 +110,8 @@ while (True and len(landmarks_dataset)<500):
         mid = (shape[42][0] + shape[39][0]) // 2
         eyes_gray = cv2.cvtColor(eyes, cv2.COLOR_BGR2GRAY)
         # threshold = cv2.getTrackbarPos('threshold', 'image')
-        # print(threshold)
-        threshold = 50
+        # print("threshold:",threshold)
+        threshold = 51
         _, binary_img = cv2.threshold(eyes_gray, threshold, 255, cv2.THRESH_BINARY)
         binary_img = cv2.erode(binary_img, None, iterations=2)  # 1
         binary_img = cv2.dilate(binary_img, None, iterations=4)  # 2
@@ -126,7 +126,7 @@ while (True and len(landmarks_dataset)<500):
         print(lx,rx,ly,ry)
         if lx == -1 and rx == -1:
 
-            cv2.putText(img, 'Suspicious Activity! Eyes Covered',
+            cv2.putText(img, 'Suspicious Activity Eyeball!',
                         bottomLeftCornerOfText,
                         font,
                         fontScale,
@@ -174,7 +174,7 @@ while (True and len(landmarks_dataset)<500):
 
 
 
-        mindist_threshold=calculateDistance(shape[36][0], shape[36][1], shape[40][0], shape[40][1])/5
+        mindist_threshold=calculateDistance(shape[36][0], shape[36][1], shape[40][0], shape[40][1])/4.8
 
         # if logistic regression is to be used
         # logreg = pickle.load(open("models/eye_suspicion_detection_model.sav", 'rb'))
@@ -218,7 +218,7 @@ while (True and len(landmarks_dataset)<500):
                 lineType)
     # show the image with the face detections + facial landmarks
     cv2.imshow('eyes', img)
-    # cv2.imshow("image", thresh)
+    # cv2.imshow("image", binary_img)
     # print(thresh)
     k = cv2.waitKey(10)
     if k == 27:
