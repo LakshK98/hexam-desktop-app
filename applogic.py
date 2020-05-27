@@ -71,15 +71,15 @@ class MainPage(QMainWindow):
 
         loadUi('ui/firstpage.ui',self)
         self.label_5.setText("")
-        self.label_6.setText("")
+        # self.label_6.setText("")
 
         self.pushButton.clicked.connect(self.moveToTestDetails)
 
 
 
     def moveToTestDetails(self):
-        self.label_6.setText("Loading...")
-        self.label_6.repaint()
+        # self.label_6.setText("Loading...")
+        # self.label_6.repaint()
         self.email=self.lineEdit.text()
         self.test_id=self.lineEdit_2.text()
 
@@ -88,9 +88,9 @@ class MainPage(QMainWindow):
         print("emaiil: ",self.email)
         if self.test_details_dict is None:
             self.label_5.setText("Invalid Test ID")
-            self.label_6.setText("")
+            # self.label_6.setText("")
             self.label_5.repaint()
-            self.label_6.repaint()
+            # self.label_6.repaint()
 
         else:
             self.label_5.setText("")
@@ -105,14 +105,14 @@ class MainPage(QMainWindow):
                 self.label_5.setText("")
                 self.label_5.repaint()
 
-                self.label_6.setText("")
-                self.label_6.repaint()
+                # self.label_6.setText("")
+                # self.label_6.repaint()
                 # self.test_details_dict=json.loads(dummy_data)
                 self.test_details_dict['eye_track']=True
                 self.questions_dict=json.loads(dummy_questions_data)
                 self.test_details_dict['questions']=self.questions_dict['questions']
-                self.label_6.setText("")
-                self.label_6.repaint()
+                # self.label_6.setText("")
+                # self.label_6.repaint()
 
                 self.hide()
                 print("going to next page")
