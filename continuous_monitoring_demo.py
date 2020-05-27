@@ -15,6 +15,7 @@ checked=False
 dnnDetector=FaceDetectionDnn()
 bbox_color = (0, 0, 255)
 frame_text=""
+not_checked_count=0
 while(True):
     ret,frame=cap.read()
     frame_dnn, dnn_bboxes=dnnDetector.detectFaceOpenCVDnn(frame)
@@ -27,7 +28,8 @@ while(True):
 
 
     else:
-        if not checked :
+        if not checked or not_checked_count==10:
+            not_checked_count=0
             if recog.is_face_match(frame):
                 verified=True
                 bbox_color=(0,255,0)
@@ -38,7 +40,8 @@ while(True):
                 frame_text = "Wrong Face"
 
             checked=True
-
+        else:
+            not_checked_count+=1
     cv2.putText(frame, frame_text, (100, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.4, bbox_color, 3, 2)
     for bbox in dnn_bboxes:
         cv2.rectangle(frame, (bbox[0], bbox[1]), (bbox[2], bbox[3]), bbox_color,

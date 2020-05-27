@@ -1,2 +1,5 @@
 venv/
 extras/
+eye_suspicion/
+savedimages/
+__pycache__/

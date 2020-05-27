@@ -2,6 +2,9 @@ import cv2
 import dlib
 import numpy as np
 import math
+import csv
+import pickle
+from sklearn.linear_model import LogisticRegression
 
 def shape_to_np(landmarks, dtype="int"):
     # initialize the list of (x, y)-coordinates
@@ -47,6 +50,11 @@ predictor = dlib.shape_predictor('models/shape_predictor_68_face_landmarks.dat')
 
 left = [36, 37, 38, 39, 40, 41]
 right = [42, 43, 44, 45, 46, 47]
+imp_landmarks=[1,2,16,17,28,29,30]
+landmarks_dataset=[]
+landmarks_logreg=[[39,0],[40,0],[41,0],[37,1],[38,1],[28,1]]
+
+
 
 cap = cv2.VideoCapture(0)
 ret, img = cap.read()
@@ -71,8 +79,10 @@ fontScale              = 1
 fontColor              = (0, 0, 255)
 lineType               = 2
 
-while (True):
+
+while (True and len(landmarks_dataset)<500):
     ret, img = cap.read()
+    img = cv2.flip(img, 1)
     # cv2.imshow('eyes', img)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     rects = detector(gray, 1)
@@ -83,7 +93,9 @@ while (True):
                     fontScale,
                     fontColor,
                     lineType)
+
     for rect in rects:
+        dataset_row=[]
         shape = predictor(gray, rect)
         shape = shape_to_np(shape)
 
@@ -113,12 +125,41 @@ while (True):
         rx,ry=contouring(binary_img[:, mid:], mid, img, True)
         print(lx,rx,ly,ry)
         if lx == -1 and rx == -1:
+
             cv2.putText(img, 'Suspicious Activity! Eyes Covered',
                         bottomLeftCornerOfText,
                         font,
                         fontScale,
                         fontColor,
                         lineType)
+        # else:
+        #
+        #     if lx==-1:
+        #         dataset_row_x=[rx,rx]
+        #         dataset_row_y=[ry,ry]
+        #     elif rx==-1:
+        #         dataset_row_x=[lx,lx]
+        #         dataset_row_y=[ly,ly]
+        #     else:
+        #         dataset_row_x=[lx,rx]
+        #         dataset_row_y=[ly,ry]
+        #
+        #
+        #     # for creating dataset
+        #     for landmark_index in imp_landmarks + left + right:
+        #         print(shape[landmark_index])
+        #         dataset_row_x.append(shape[landmark_index][0])
+        #         dataset_row_y.append(shape[landmark_index][1])
+        #     dataset_row=[x -min(dataset_row_x) for x in dataset_row_x]
+        #     dataset_row+=[y -min(dataset_row_y) for y in dataset_row_y]
+        #     landmarks_dataset.append(dataset_row)
+        #     print(dataset_row)
+        #     cv2.putText(img, str(len(landmarks_dataset)),
+        #                 (10,300),
+        #                 font,
+        #                 fontScale,
+        #                 fontColor,
+        #                 lineType)
         mindist_left = 100
         mindist_right=100
         for (x, y) in shape[36:42]:
@@ -131,8 +172,20 @@ while (True):
                 if (calculateDistance(x, y, rx, ry) < mindist_right):
                     mindist_right = calculateDistance(x, y, rx, ry)
 
-        mindist_threshold=calculateDistance(shape[36][0], shape[36][1], shape[40][0], shape[40][1])/5.5
+
+
+        mindist_threshold=calculateDistance(shape[36][0], shape[36][1], shape[40][0], shape[40][1])/5
+
+        # if logistic regression is to be used
+        # logreg = pickle.load(open("models/eye_suspicion_detection_model.sav", 'rb'))
+        # X=[]
+        # for x,y in landmarks_logreg:
+        #    X.append(shape[x][y])
+        # result = logreg.predict(np.array(X).reshape(1,-1))
+
+        # if result[0]==1:
         if mindist_left<mindist_threshold or mindist_right <mindist_threshold:
+        #
             cv2.putText(img, 'Suspicious Activity Eyeball!',
                         bottomLeftCornerOfText,
                         font,
@@ -151,21 +204,28 @@ while (True):
         #             0.5,
         #             fontColor,
         #             lineType)
-        # for (x, y) in shape[36:48]:
+        for (x, y) in shape[36:48]:
+            cv2.circle(img, (x, y), 2, (0, 255, 0), -1)
+
+        # for (x, y) in shape:
         #     cv2.circle(img, (x, y), 2, (0, 255, 0), -1)
 
-        for (x, y) in shape:
-            cv2.circle(img, (x, y), 2, (0, 255, 0), -1)
+    cv2.putText(img, 'Press Esc to exit',
+                (10, 30),
+                font,
+                fontScale,
+                fontColor,
+                lineType)
     # show the image with the face detections + facial landmarks
     cv2.imshow('eyes', img)
     # cv2.imshow("image", thresh)
     # print(thresh)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    k = cv2.waitKey(10)
+    if k == 27:
         break
 
 
-
-
+# for single image test
 # img = cv2.imread('down.png')
 #
 # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -230,3 +290,21 @@ while (True):
 
 cap.release()
 cv2.destroyAllWindows()
+
+# for creating dataset
+
+# with open('eye_suspicion/eye_landmarks.csv', 'w', newline='') as file:
+#     writer = csv.writer(file)
+#     title_row=["suspicious","left_eyeball_x","left_eyeball_y"]
+#
+#     for x in left+right+imp_landmarks:
+#         title_row.append((str(x)+'x'))
+#     title_row+=["right_eyeball_x","right_eyeball_y"]
+#     for x in left + right + imp_landmarks:
+#         title_row.append((str(x)+'y'))
+#     writer.writerow(title_row)
+#
+#     for row in landmarks_dataset:
+#         writer.writerow([1]+row)
+
+

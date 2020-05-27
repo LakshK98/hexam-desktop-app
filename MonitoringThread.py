@@ -8,12 +8,14 @@ import glob
 
 class MonitoringThread(QThread):
     report_signal = pyqtSignal(int, int,int)
-    def __init__(self,eyeTrack=False):
+    def __init__(self,known_faces,eyeTrack=False):
         super(MonitoringThread,self).__init__()
         self.eyeTrack=eyeTrack
         self.total_frames=0
         self.faceRecognition = FaceRecognition()
-        self.faceRecognition.load_known_images(glob.glob("savedimages/*.jpg"))
+        # self.faceRecognition.load_known_images(glob.glob("savedimages/*.jpg"))
+        self.faceRecognition.encode_known_images(known_faces)
+
         self.dnnDetector = FaceDetectionDnn()
         self.verifySuspicionCount=0
         self.verifiedFramesCount = 0
@@ -32,6 +34,7 @@ class MonitoringThread(QThread):
         verified = False
         checked = False
         frame_text=""
+        un_checked_count=0
         while (True ):
             ret, frame = cap.read()
             self.total_frames += 1
@@ -45,7 +48,8 @@ class MonitoringThread(QThread):
                 bbox_color = (0, 0, 255)
 
             else:
-                if not checked:
+                if not checked or un_checked_count==10:
+                    un_checked_count=0
                     if self.faceRecognition.is_face_match(frame):
                         verified = True
                         bbox_color = (0, 255, 0)
@@ -56,6 +60,8 @@ class MonitoringThread(QThread):
                         frame_text = "Wrong Face"
 
                     checked = True
+                else:
+                    un_checked_count+=1
             start=time.time()
 
 

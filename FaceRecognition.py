@@ -29,6 +29,22 @@ class FaceRecognition:
         print(len(self.known_face_encodings))
         # return self.known_images
 
+    def encode_known_images(self, images):
+        self.known_images = images
+
+        self.known_face_encodings = []
+
+        for i,image in enumerate(self.known_images):
+            try:
+                encode = self.get_encode(image)
+                print(i)
+                self.known_face_encodings.append(encode)
+            except Exception:
+                pass
+        print(len(self.known_images))
+        print(len(self.known_face_encodings))
+        # return self.known_images
+
     def get_encode(self, image):
         face_encoding = face_recognition.face_encodings(image)[0]
         return face_encoding

@@ -1,13 +1,16 @@
 import cv2
-
+from FaceRecognition import FaceRecognition
 class FaceCalibration():
-    def __init__(self):
+    def __init__(self,known_faces):
         # self.start_calibration()
         self.modelFile = "models/opencv_face_detector_uint8.pb"
         self.configFile = "models/opencv_face_detector.pbtxt"
         self.net = cv2.dnn.readNetFromTensorflow(self.modelFile, self.configFile)
 
         self.conf_threshold = 0.8
+        self.faceRecognition = FaceRecognition()
+        # self.faceRecognition.load_known_images(glob.glob("savedimages/*.jpg"))
+        self.faceRecognition.encode_known_images(known_faces)
 
 
 
@@ -64,11 +67,13 @@ class FaceCalibration():
                 cv2.rectangle(frameOpencvDnn, (x1, y1), (x2, y2), (0, 255, 0), int(round(frameHeight / 150)), 8)
         return frameOpencvDnn, bboxes
 
-    def verify_face(self):
-        return True
+    def verify_face(self,frame):
+
+        return self.faceRecognition.is_face_match(frame)
 
     def start_calibration(self):
         cap = cv2.VideoCapture(0)
+
         verification_phase=True
         right_phase=False
         left_phase=False
@@ -81,6 +86,7 @@ class FaceCalibration():
         while (True):
             bbox_color = (0, 255, 0)
             hasFrame, frame = cap.read()
+            frame = cv2.flip(frame, 1)
 
             outOpencvDnn, dnn_bboxes  = self.detectFaceOpenCVDnn(self.net, frame)
             if len(dnn_bboxes) ==0:
@@ -92,9 +98,9 @@ class FaceCalibration():
                 saved_faces = []
 
                 bbox_color = (0, 255, 255)
-                cv2.putText(outOpencvDnn, "Look Straight into the camera to verify face", (100, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.4, bbox_color, 3,
+                cv2.putText(outOpencvDnn, "Look Straight into the camera to verify face", (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 1.4, bbox_color, 3,
                             cv2.LINE_AA)
-                if self.verify_face():
+                if self.verify_face(frame):
                     verification_phase=False
                     right_phase=True
             elif right_phase:
@@ -103,7 +109,7 @@ class FaceCalibration():
                 cv2.putText(outOpencvDnn, "Slowly move your head towards your right", (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 1.4, (255, 255, 0), 3,
                             cv2.LINE_AA)
 
-                outOpencvHaar, bboxes = self.detectFaceOpenCVHaar(self.faceCascade, outOpencvDnn)
+                outOpencvHaar, bboxes = self.detectFaceOpenCVHaar(self.faceCascade, cv2.flip(outOpencvDnn, 1))
 
                 print(right_phase_count)
                 if right_phase_count ==11:
@@ -123,6 +129,9 @@ class FaceCalibration():
 
 
                 if left_phase_count ==11:
+                    cv2.destroyAllWindows()
+                    cap.release()
+                    print("breaking")
                     break
 
                 cv2.putText(outOpencvDnn, "Face Verified", (500, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.4, (0, 255, 0), 3,
@@ -130,7 +139,7 @@ class FaceCalibration():
                 cv2.putText(outOpencvDnn, "Slowly move your head towards your left", (100, 100),
                             cv2.FONT_HERSHEY_SIMPLEX, 1.4, (255, 0, 0), 3,
                             cv2.LINE_AA)
-                outOpencvHaar, bboxes = self.detectFaceOpenCVHaar(self.faceCascade, cv2.flip(outOpencvDnn, 1))
+                outOpencvHaar, bboxes = self.detectFaceOpenCVHaar(self.faceCascade, outOpencvDnn)
 
                 if len(bboxes)==1:
                     bbox_color = (255, 0, 0)
@@ -157,9 +166,10 @@ class FaceCalibration():
                 cap.release()
 
                 return [],True
-
-        cv2.destroyAllWindows()
-        cap.release()
+        print("destroying")
+        # cv2.destroyAllWindows()
+        # cap.release()
+        print("destroyed")
         return saved_faces,False
 
 

@@ -18,7 +18,7 @@ class TestWindow(QMainWindow):
         self.qIndex=2
         self.numQuestions=len(test_details_dict['questions'])
 
-        self.label.setText(test_details_dict['test_title'])
+        self.label.setText(test_details_dict['title'])
         self.qustionWidgets=[]
         for index,question in enumerate(test_details_dict['questions']):
             questionWidget=None
@@ -26,9 +26,9 @@ class TestWindow(QMainWindow):
             print(question)
             if(question['question_type']==0):
 
-                questionWidget=QuestionMCQWidget(index+1,test_details_dict['questions'][0])
+                questionWidget=QuestionMCQWidget(index+1,test_details_dict['questions'][index])
             else:
-                questionWidget = QuestionBriefWidget(index+1,test_details_dict['questions'][0])
+                questionWidget = QuestionBriefWidget(index+1,test_details_dict['questions'][index])
 
             self.qustionWidgets.append(questionWidget)
             self.stackedWidget.addWidget(questionWidget)
