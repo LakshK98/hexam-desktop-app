@@ -47,7 +47,7 @@ dummy_questions_data='{  "questions":[' \
            '    },' \
            '    {' \
            '      "question_id":3,' \
-           '      "question_type":0,' \
+           '      "question_type":1,' \
            '      "question":"What is the name of a webpage address?",' \
            '      "options":["Directory","Protocol","URL","Domain"]' \
            '    },' \
@@ -59,8 +59,8 @@ dummy_questions_data='{  "questions":[' \
            '    },' \
            '    {' \
            '      "question_id":5,' \
-           '      "question_type":0,' \
-           '      "question":"Which of the following technologies has been used to accomplish less power ?",' \
+           '      "question_type":1,' \
+           '      "question":"Which technologies  accomplish less power ?",' \
            '      "options":["Serial Bus Mouse","Random Access Memory","Blu Ray Drive","SSD"]' \
            '    }'\
            '    ]' \
@@ -84,6 +84,8 @@ class MainPage(QMainWindow):
         self.test_id=self.lineEdit_2.text()
 
         self.test_details_dict=get_test_details(self.test_id)
+        self.test_details_dict['duration']=int(self.test_details_dict['duration'])
+        print("test detils:",self.test_details_dict)
         print("testid: ",self.test_id)
         print("emaiil: ",self.email)
         if self.test_details_dict is None:
@@ -155,8 +157,18 @@ class MainPage(QMainWindow):
         #     eye_sus = int((eyeTrackSuspicionCount / verifiedFramesCount) * 100)
 
         print("Eye track",self.test_details_dict['eye_track'])
+        reportArray=[]
+        for briefWidget in self.testWindow.breiefWidgets:
+            questionObj={}
+            questionObj['isSubjective']=True
+            questionObj['question']=briefWidget.label.text()
+
+            questionObj['answer']=briefWidget.plainTextEdit.toPlainText()
+            reportArray.append((questionObj))
+        print(reportArray)
+        reportArray=json.dumps(reportArray)
         self.submitWindow = SubmitWindow(self.test_details_dict['eye_track'],self.offscreen_time, app_switch_percent,
-                                         verifiedFramesCount, eyeTrackSuspicionCount,total_frames,self.test_details_dict['id'],self.email)
+                                         verifiedFramesCount, eyeTrackSuspicionCount,total_frames,self.test_details_dict['_id'],self.email,reportArray)
 
         self.submitWindow.show()
 
@@ -206,6 +218,7 @@ class MainPage(QMainWindow):
 
 
     def submit_test(self):
+
         self.testWindow.label_7.setVisible(True)
 
         self.monitorThread.stop=True
@@ -213,7 +226,7 @@ class MainPage(QMainWindow):
 
 
 def focus():
-    print("fuckus")
+    print("focus")
 app =QApplication(sys.argv)
 widget=MainPage()
 widget.show()

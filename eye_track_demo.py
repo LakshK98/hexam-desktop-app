@@ -174,7 +174,7 @@ while (True and len(landmarks_dataset)<500):
 
 
 
-        mindist_threshold=calculateDistance(shape[36][0], shape[36][1], shape[40][0], shape[40][1])/4.8
+        mindist_threshold=calculateDistance(shape[36][0], shape[36][1], shape[40][0], shape[40][1])/4
 
         # if logistic regression is to be used
         # logreg = pickle.load(open("models/eye_suspicion_detection_model.sav", 'rb'))

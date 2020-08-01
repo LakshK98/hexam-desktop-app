@@ -15,3 +15,4 @@ class QuestionBriefWidget(QWidget):
         self.label.setText(question['question'])
 
 
+
